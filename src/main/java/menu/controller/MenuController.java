@@ -26,18 +26,27 @@ public class MenuController {
 
     public void init() {
         startMenuRecommendation();
-        List<Coach> coaches = getCoaches();
+        List<Coach> coaches = getCoachNames();
+        updateMenuDislike(coaches);
     }
 
     private void startMenuRecommendation() {
         outputView.printStartMenuRecommendation();
     }
 
-    private List<Coach> getCoaches() {
+    private List<Coach> getCoachNames() {
         outputView.notifyInputCoachNames();
         List<String> coachNames = inputView.readCoachNames();
         return coachNames.stream()
                 .map(Coach::new)
                 .collect(Collectors.toList());
+    }
+
+    private void updateMenuDislike(List<Coach> coaches) {
+        coaches.forEach(coach -> {
+            outputView.notifyInputMenuDislike(coach.getName());
+            List<String> menuDislike = inputView.readMenuDislike();
+            coach.updateMenuDislike(menuDislike);
+        });
     }
 }

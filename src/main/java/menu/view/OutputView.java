@@ -1,7 +1,6 @@
 package menu.view;
 
 import menu.constant.OutputMessage;
-import menu.model.Coach;
 
 public class OutputView {
     private static OutputView outputView;
@@ -24,6 +23,9 @@ public class OutputView {
         System.out.println(message);
     }
 
+    private void printf(String message, String... args) {
+        System.out.printf(message, args);
+    }
 
     public void printStartMenuRecommendation() {
         println(OutputMessage.PRINT_START_MENU_RECOMMENDATION);
@@ -32,5 +34,9 @@ public class OutputView {
 
     public void notifyInputCoachNames() {
         println(OutputMessage.NOTIFY_INPUT_COACH_NAMES);
+    }
+
+    public void notifyInputMenuDislike(String coachName) {
+        printf(OutputMessage.NOTIFY_INPUT_MENU_DISLIKE, coachName);
     }
 }
