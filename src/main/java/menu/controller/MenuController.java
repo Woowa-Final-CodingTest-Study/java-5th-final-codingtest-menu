@@ -1,5 +1,6 @@
 package menu.controller;
 
+import menu.constant.MenuList;
 import menu.model.Coach;
 import menu.view.InputView;
 import menu.view.OutputView;
@@ -25,6 +26,7 @@ public class MenuController {
     }
 
     public void init() {
+        MenuList.init();
         startMenuRecommendation();
         List<Coach> coaches = getCoachNames();
         updateMenuDislike(coaches);

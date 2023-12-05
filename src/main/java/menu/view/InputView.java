@@ -1,10 +1,10 @@
 package menu.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.HashSet;
+import java.util.List;
 import menu.constant.ErrorMessage;
 import menu.constant.MenuList;
-
-import java.util.List;
 
 public class InputView {
     private static InputView inputView;
@@ -20,23 +20,40 @@ public class InputView {
     }
 
     public List<String> readCoachNames() {
-        String input = Console.readLine();
-        List<String> coachNames = List.of(input.split(","));
-        validateCoachCount(coachNames);
-        coachNames.forEach(this::validateCoachNameLength);
-        return coachNames;
+        while (true) {
+            try {
+                String input = Console.readLine();
+                List<String> coachNames = List.of(input.split(","));
+                validateCoachCount(coachNames);
+                validateCoachNameLength(coachNames);
+                validateCoachNameUnique(coachNames);
+                return coachNames;
+            } catch (IllegalArgumentException e) {
+                printError(e);
+            }
+        }
     }
 
     private void validateCoachCount(List<String> coachNames) {
         int count = coachNames.size();
-        if (count < 2 || count > 5)
+        if (count < 2 || count > 5) {
             throw new IllegalArgumentException(ErrorMessage.COACH_COUNT_OUT_OF_RANGE);
+        }
     }
 
-    private void validateCoachNameLength(String name) {
-        int length = name.length();
-        if (length < 2 || length > 4)
-            throw new IllegalArgumentException(ErrorMessage.COACH_NAME_LENGTH_OUT_OF_RANGE);
+    private void validateCoachNameLength(List<String> names) {
+        for (String name : names) {
+            int length = name.length();
+            if (length < 2 || length > 4) {
+                throw new IllegalArgumentException(ErrorMessage.COACH_NAME_LENGTH_OUT_OF_RANGE);
+            }
+        }
+    }
+
+    private void validateCoachNameUnique(List<String> coachNames) {
+        if (coachNames.size() != new HashSet<>(coachNames).size()) {
+            throw new IllegalArgumentException(ErrorMessage.COACH_DUPLICATED);
+        }
     }
 
     public List<String> readMenuDislike() {
@@ -45,7 +62,8 @@ public class InputView {
                 String input = Console.readLine();
                 List<String> menus = List.of(input.split(","));
                 validateMenuCount(menus);
-                menus.forEach(this::validateMenuExist);
+                validateMenuExist(menus);
+                validateMenuUnique(menus);
                 return menus;
             } catch (IllegalArgumentException e) {
                 printError(e);
@@ -54,14 +72,22 @@ public class InputView {
     }
 
     private void validateMenuCount(List<String> menus) {
-        int count = menus.size();
-        if (count < 2 || count > 4)
+        if (menus.size() > 2) {
             throw new IllegalArgumentException(ErrorMessage.MENU_COUNT_OUT_OF_RANGE);
+        }
     }
 
-    private void validateMenuExist(String menu) {
-        if (!MenuList.contains(menu))
-            throw new IllegalArgumentException(ErrorMessage.MENU_NOT_EXIST);
+    private void validateMenuExist(List<String> menus) {
+        menus.forEach(menu -> {
+            if (!MenuList.contains(menu)) {
+                throw new IllegalArgumentException(ErrorMessage.MENU_NOT_EXIST);
+            }
+        });
+    }
+
+    private void validateMenuUnique(List<String> menus) {
+        if(menus.size() != new HashSet<>(menus).size())
+            throw new IllegalArgumentException(ErrorMessage.MENU_DUPLICATED);
     }
 
     private void printError(Exception e) {
