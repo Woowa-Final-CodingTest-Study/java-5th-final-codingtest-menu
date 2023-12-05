@@ -25,4 +25,8 @@ public class MenuList {
         }
         return false;
     }
+
+    public static List<String> get(Category category) {
+        return menuList.get(category);
+    }
 }

@@ -1,12 +1,16 @@
 package menu.controller;
 
-import menu.constant.MenuList;
-import menu.model.Coach;
-import menu.view.InputView;
-import menu.view.OutputView;
-
+import java.time.DayOfWeek;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import menu.constant.Category;
+import menu.constant.MenuList;
+import menu.model.Coach;
+import menu.model.DayOfWeekWrapper;
+import menu.model.Recommendation;
+import menu.view.InputView;
+import menu.view.OutputView;
 
 public class MenuController {
     private static MenuController menuController;
@@ -30,6 +34,8 @@ public class MenuController {
         startMenuRecommendation();
         List<Coach> coaches = getCoachNames();
         updateMenuDislike(coaches);
+
+        recommendMenu(coaches);
     }
 
     private void startMenuRecommendation() {
@@ -51,4 +57,38 @@ public class MenuController {
             coach.updateMenuDislike(menuDislike);
         });
     }
+
+    private void recommendMenu(List<Coach> coaches) {
+        List<DayOfWeek> weekDays = DayOfWeekWrapper.weekDays();
+        List<Category> categories = new ArrayList<>();
+        List<Recommendation> recommendations = coaches.stream()
+                .map(Recommendation::new)
+                .collect(Collectors.toList());
+
+        weekDays.forEach(dayOfWeek -> {
+            Category category = Category.pickRandom();
+            categories.add(category);
+            List<String> menus = MenuList.get(category);
+            recommendations.forEach(recommendation -> recommendation.addRandomMenu(menus));
+        });
+
+        outputView.printResult(categories, recommendations);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

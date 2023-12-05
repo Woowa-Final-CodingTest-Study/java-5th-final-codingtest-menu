@@ -17,4 +17,8 @@ public class Coach {
     public void updateMenuDislike(List<String> menuDislike) {
         this.menuDislike = menuDislike;
     }
+
+    public boolean dislike(String menu) {
+        return menuDislike.contains(menu);
+    }
 }
