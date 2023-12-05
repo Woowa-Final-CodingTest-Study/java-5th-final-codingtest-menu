@@ -12,4 +12,8 @@ public class OutputView {
     public void requestCoachName() {
         System.out.println("코치의 이름을 입력해 주세요. (, 로 구분)");
     }
+
+    public void requestHateFood(String name) {
+        System.out.printf("%s가 못 먹는 메뉴를 입력해 주세요.\n", name);
+    }
 }
