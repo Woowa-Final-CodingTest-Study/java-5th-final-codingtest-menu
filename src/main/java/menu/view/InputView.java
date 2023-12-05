@@ -68,4 +68,21 @@ public class InputView {
             throw new IllegalArgumentException("[ERROR] 이름은 4글자 이하이어야합니다");
         }
     }
+
+    public List<String> readHateFood() {
+        try {
+            List<String> hateFood = Arrays.asList(Console.readLine().split(","));
+            validateNumberOfFood(hateFood.size());
+            return hateFood;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return readHateFood();
+        }
+    }
+
+    void validateNumberOfFood(int numberOfFood) {
+        if (numberOfFood > 2) {
+            throw new IllegalArgumentException("[ERROR] 못먹는 메뉴는 2가지 이하여야 합니다");
+        }
+    }
 }
