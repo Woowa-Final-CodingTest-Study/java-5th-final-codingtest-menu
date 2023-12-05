@@ -1,7 +1,11 @@
 package menu.controller;
 
+import menu.model.Coach;
 import menu.view.InputView;
 import menu.view.OutputView;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class MenuController {
     private static MenuController menuController;
@@ -18,5 +22,22 @@ public class MenuController {
             menuController = new MenuController(inputView, outputView);
         }
         return menuController;
+    }
+
+    public void init() {
+        startMenuRecommendation();
+        List<Coach> coaches = getCoaches();
+    }
+
+    private void startMenuRecommendation() {
+        outputView.printStartMenuRecommendation();
+    }
+
+    private List<Coach> getCoaches() {
+        outputView.notifyInputCoachNames();
+        List<String> coachNames = inputView.readCoachNames();
+        return coachNames.stream()
+                .map(Coach::new)
+                .collect(Collectors.toList());
     }
 }

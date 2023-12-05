@@ -10,5 +10,6 @@ public class Application {
         OutputView outputView = OutputView.getInstance();
 
         MenuController menuController = MenuController.getInstance(inputView, outputView);
+        menuController.init();
     }
 }
