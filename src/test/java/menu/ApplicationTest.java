@@ -78,9 +78,9 @@ public class ApplicationTest extends NsTest {
 
         @ParameterizedTest
         @ArgumentsSource(CoachNameProvider.class)
-        void 코치_입력_예외_테스트(String errorMessage, String... args) {
+        void 코치_입력_예외_테스트(String errorMessage, String coachNames) {
             assertTimeoutPreemptively(RANDOM_TEST_TIMEOUT, () -> {
-                runException(args);
+                runException(coachNames);
                 assertThat(output()).contains(errorMessage);
             });
         }
