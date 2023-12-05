@@ -1,5 +1,6 @@
 package menu.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,13 +21,30 @@ public enum Food {
         this.foods = foods;
     }
 
-    List<String> getFoods() {
-        return foods;
-    }
-
-
     public static boolean isFoodExist(String foodName) {
         return Arrays.stream(Food.values())
-                .anyMatch(foodCategory -> foodCategory.getFoods().contains(foodName));
+                .anyMatch(foodCategory -> foodCategory.foods.contains(foodName));
     }
+
+//    public String pickRandomFood() {
+//        int categoryIndex = Randoms.pickNumberInRange(1, 5);
+//        for (Food food : values()) {
+//            if (categoryIndex == food.categoryIndex) {
+//                return Randoms.shuffle(food.foods).get(0);
+//            }
+//        }
+//        return null;
+//    }
+
+    public static Food pickRandomCategory() {
+        int categoryIndex = Randoms.pickNumberInRange(1, 5);
+        for (Food food : values()) {
+            if (categoryIndex == food.categoryIndex) {
+                return food;
+            }
+        }
+        return null;
+    }
+
+
 }
