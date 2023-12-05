@@ -18,5 +18,6 @@ public class MenuSelectManager {
     }
 
     private void endManager() {
+        outputView.printEndManager();
     }
 }
