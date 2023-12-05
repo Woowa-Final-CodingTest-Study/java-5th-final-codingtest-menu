@@ -14,17 +14,16 @@ public class CoachGroup {
         this.coaches.add(new Coach(coachName, hateFood));
     }
 
-    public void makeCategorys() {
-        List<Food> categorys = new ArrayList<>();
-        while (categorys.size() < 5) {
-            Food randomCategory = Food.pickRandomCategory();
-
-            long sameCategoryCount = categorys.stream()
-                    .filter(value -> value.equals(randomCategory))
-                    .count();
-            if (sameCategoryCount < 2) {
-                categorys.add(randomCategory);
+    public boolean isFoodHatersExist(String food) {
+        for (Coach coach : coaches) {
+            if (coach.isHateFood(food)) {
+                return true;
             }
         }
+        return false;
+    }
+
+    public List<Coach> getCoaches() {
+        return coaches;
     }
 }

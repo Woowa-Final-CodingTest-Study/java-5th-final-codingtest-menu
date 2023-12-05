@@ -11,4 +11,15 @@ public class Coach {
         this.hateFood = hateFood;
     }
 
+    boolean isHateFood(String food) {
+        if (hateFood.contains(food)) {
+            return true;
+        }
+        return false;
+    }
+
+    String getName() {
+        return name;
+    }
+
 }

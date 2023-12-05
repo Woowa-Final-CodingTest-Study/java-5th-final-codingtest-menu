@@ -36,12 +36,16 @@ public class InputView {
     }
 
     void validateCoachName(List<String> names) {
-        validateDuplicateName(names);
+        try {
+            validateDuplicateName(names);
 
-        for (String name : names) {
-            validateNameFormat(name);
-            validateMinNameLength(name);
-            validateMaxNameLength(name);
+            for (String name : names) {
+                validateNameFormat(name);
+                validateMinNameLength(name);
+                validateMaxNameLength(name);
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e);
         }
     }
 
@@ -64,7 +68,7 @@ public class InputView {
     }
 
     void validateMaxNameLength(String name) {
-        if (name.length() < 4) {
+        if (name.length() > 4) {
             throw new IllegalArgumentException("[ERROR] 이름은 4글자 이하이어야합니다");
         }
     }
