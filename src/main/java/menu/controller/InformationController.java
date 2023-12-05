@@ -12,12 +12,30 @@ public class InformationController {
         outputView.printInputCoachNamesPrompt();
 
         try {
-            String input = inputView.inputNames();
-            return input;
+            String names = inputView.inputNames();
+            return names;
         } catch(IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());
             return getInputNames();
         }
+    }
 
+    public void getInputCannotEatCoach(String names) {
+        String[] name = names.split(",");
+
+        for(int i=0; i<name.length; i++){
+            inputCannotEatCoach(name[i]);
+        }
+    }
+
+    public String inputCannotEatCoach(String coach) {
+        try {
+            outputView.printInputCannotEatPrompt(coach);
+            String foods = inputView.inputFood();
+            return foods;
+        } catch(IllegalArgumentException illegalArgumentException) {
+            System.out.println(illegalArgumentException.getMessage());
+            return inputCannotEatCoach(coach);
+        }
     }
 }

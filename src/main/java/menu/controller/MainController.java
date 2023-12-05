@@ -14,10 +14,16 @@ public class MainController {
 
     public void run() {
         outputView.printStartRecommend();
-        getCoachName();
+        String names = getCoachNames();
+        getCannotEatFoods(names);
     }
 
-    public void getCoachName() {
-        informationController.getInputNames();
+    public String getCoachNames() {
+         String names = informationController.getInputNames();
+         return names;
+    }
+
+    public void getCannotEatFoods(String names) {
+        informationController.getInputCannotEatCoach(names);
     }
 }

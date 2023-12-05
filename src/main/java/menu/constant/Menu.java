@@ -25,4 +25,13 @@ public enum Menu {
     public List<String> getMenus() {
         return menus;
     }
+
+    public static boolean findMenu(String menuName) {
+        for(Menu menu : Menu.values()){
+            if(menu.getMenus().contains(menuName)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
