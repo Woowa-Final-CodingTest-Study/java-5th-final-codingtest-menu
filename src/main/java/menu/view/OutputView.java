@@ -15,4 +15,10 @@ public class OutputView {
     public void printInputCannotEatPrompt(String coach) {
         System.out.printf(SystemMessage.INPUT_CANNOT_EAT, coach);
     }
+
+    public void printCommendResult(StringBuilder result) {
+        System.out.println(SystemMessage.MENU_COMMEND_RESULT);
+        System.out.println(result);
+        System.out.println(SystemMessage.FINISH_RECOMMEND);
+    }
 }

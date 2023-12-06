@@ -1,5 +1,10 @@
 package menu.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import menu.domain.UnPreferredMenu;
+import menu.domain.UnPreferredMenus;
 import menu.view.InputView;
 import menu.view.OutputView;
 
@@ -20,12 +25,16 @@ public class InformationController {
         }
     }
 
-    public void getInputCannotEatCoach(String names) {
+    public List<UnPreferredMenu> getInputCannotEatCoach(String names) {
         String[] name = names.split(",");
-
+        List<UnPreferredMenu> unPreferredMenus = new ArrayList<>();
         for(int i=0; i<name.length; i++){
-            inputCannotEatCoach(name[i]);
+            String foods = inputCannotEatCoach(name[i]);
+
+             unPreferredMenus.add(new UnPreferredMenu(name[i], Arrays.asList(foods.split(","))));
         }
+
+        return unPreferredMenus;
     }
 
     public String inputCannotEatCoach(String coach) {

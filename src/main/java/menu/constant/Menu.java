@@ -1,5 +1,8 @@
 package menu.constant;
 
+import static java.util.Collections.EMPTY_LIST;
+
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,5 +36,15 @@ public enum Menu {
             }
         }
         return false;
+    }
+
+    public static String getRecommendMenu(String menuCategory) {
+        for(Menu menu : Menu.values()) {
+            if(menu.getCategory().equals(menuCategory)) {
+                String recommendMenu = Randoms.shuffle(menu.getMenus()).get(0);
+                return recommendMenu;
+            }
+        }
+        throw new IllegalArgumentException();
     }
 }

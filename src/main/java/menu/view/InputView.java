@@ -24,6 +24,7 @@ public class InputView {
     public void validateInputFood(String input) {
         validateSeparator(input);
         validateDuplicate(input);
+        validateContainMenu(input);
         validateFoodCount(input);
     }
 
@@ -31,7 +32,6 @@ public class InputView {
         validateNull(input);
         validateSeparator(input);
         validateDuplicate(input);
-        validateContainMenu(input);
         validateNameCharacterCount(input);
         validateNameCount(input);
     }
