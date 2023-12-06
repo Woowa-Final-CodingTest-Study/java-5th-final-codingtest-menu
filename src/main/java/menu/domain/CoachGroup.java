@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CoachGroup {
-    List<Coach> coaches;
+    private final List<Coach> coaches;
 
     public CoachGroup() {
         this.coaches = new ArrayList<>();

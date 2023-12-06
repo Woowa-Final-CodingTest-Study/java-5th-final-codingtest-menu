@@ -2,6 +2,7 @@ package menu.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public enum Food {
@@ -16,7 +17,7 @@ public enum Food {
 
     Food(int index, List<String> foods) {
         this.index = index;
-        this.foods = foods;
+        this.foods = Collections.unmodifiableList(foods);
     }
 
     public static boolean isFoodExist(String foodName) {

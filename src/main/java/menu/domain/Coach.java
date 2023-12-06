@@ -1,24 +1,25 @@
 package menu.domain;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Coach {
-    private String name;
-    private List<String> hateFood;
+    private final String name;
+    private final List<String> hateFood;
 
     Coach(String name, List<String> hateFood) {
         this.name = name;
-        this.hateFood = hateFood;
+        this.hateFood = Collections.unmodifiableList(hateFood);
     }
 
-    boolean isHateFood(String food) {
+    public boolean isHateFood(String food) {
         if (hateFood.contains(food)) {
             return true;
         }
         return false;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 

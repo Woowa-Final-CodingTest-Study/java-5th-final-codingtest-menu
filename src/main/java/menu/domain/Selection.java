@@ -5,14 +5,15 @@ import static menu.constants.SystemWords.MAX_DUPLICATE_CATEGORY;
 import static menu.constants.SystemWords.SELECTION_DAYS;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Selection {
-    List<Integer> categorys;
+    private final List<Integer> categorys;
 
     public Selection() {
-        categorys = selectCategorys();
+        categorys = Collections.unmodifiableList(selectCategorys());
     }
 
 

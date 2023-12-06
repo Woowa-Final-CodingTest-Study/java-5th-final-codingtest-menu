@@ -1,15 +1,6 @@
 package menu.view;
 
-import static menu.constants.ErrorMessage.HAVE_DUPLICATE_FOOD;
-import static menu.constants.ErrorMessage.HAVE_DUPLICATE_NAME;
-import static menu.constants.ErrorMessage.INCREASE_COACH_NUMBER;
-import static menu.constants.ErrorMessage.INCREASE_FOOD_NAME;
-import static menu.constants.ErrorMessage.INCREASE_NAME_LENGTH;
-import static menu.constants.ErrorMessage.NOT_EXIST_FOOD;
-import static menu.constants.ErrorMessage.REDUCE_COACH_NUMBER;
-import static menu.constants.ErrorMessage.REDUCE_HATE_FOOD;
-import static menu.constants.ErrorMessage.REDUCE_NAME_LENGTH;
-import static menu.constants.ErrorMessage.WRONG_NAME_FORMAT;
+import static menu.constants.ErrorMessage.*;
 import static menu.constants.SystemWords.MAX_HATE_FOOD_COUNT;
 import static menu.constants.SystemWords.MAX_NAME_LENGTH;
 import static menu.constants.SystemWords.MAX_NUMBER_COACH;

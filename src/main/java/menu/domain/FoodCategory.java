@@ -6,20 +6,16 @@ import static menu.constants.SystemWords.MIN_CATEGORY_INDEX;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public enum FoodCategory {
-    JAPANESE(1, "일식", Food.JAPANESE_FOOD),
-    KOREAN(2, "한식", Food.KOREAN_FOOD),
-    CHINESE(3, "중식", Food.CHINESE_FOOD),
-    ASIAN(4, "아시안", Food.ASIAN_FOOD),
-    WESTERN(5, "양식", Food.WESTERN_FOOD);
+    JAPANESE("일식"),
+    KOREAN("한식"),
+    CHINESE("중식"),
+    ASIAN("아시안"),
+    WESTERN("양식");
 
-    private final int index;
     private final String name;
-    private final Food food;
 
-    FoodCategory(int index, String name, Food food) {
-        this.index = index;
+    FoodCategory(String name) {
         this.name = name;
-        this.food = food;
     }
 
     public static int pickRandomCategoryIndex() {
