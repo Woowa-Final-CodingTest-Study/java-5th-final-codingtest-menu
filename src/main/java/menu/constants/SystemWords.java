@@ -1,7 +1,7 @@
 package menu.constants;
 
 public class SystemWords {
-    public static final String DAYOFWEEK = "요일";
+    public static final String DAYOFWEEK_TYPE = "구분";
     public static final String CATEGORY = "카테고리";
     public static final int MIN_CATEGORY_INDEX = 1;
     public static final int MAX_CATEGORY_INDEX = 5;

@@ -1,5 +1,7 @@
 package menu;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static menu.constants.ErrorMessage.ERROR;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -69,6 +71,54 @@ public class ApplicationTest extends NsTest {
                         List.of("파인애플 볶음밥", "팟타이", "카오 팟", "나시고렝", "쌀국수", "똠얌꿍", "반미", "월남쌈", "분짜")     // 제임스
                     )
                 );
+            });
+        }
+
+        @Test
+        void 예외_코치_숫자_적을때() {
+            assertSimpleTest(() -> {
+                runException("ab");
+                assertThat(output()).contains(ERROR);
+            });
+        }
+
+        @Test
+        void 예외_코치이름_길이가_안맞을때() {
+            assertSimpleTest(() -> {
+                runException("ab,b");
+                assertThat(output()).contains(ERROR);
+            });
+        }
+
+        @Test
+        void 예외_코치이름_중복일때() {
+            assertSimpleTest(() -> {
+                runException("ab,ab,ce");
+                assertThat(output()).contains(ERROR);
+            });
+        }
+
+        @Test
+        void 예외_없는메뉴를_입력받을때() {
+            assertSimpleTest(() -> {
+                runException("ab,bc,cd","삼겹살");
+                assertThat(output()).contains(ERROR);
+            });
+        }
+
+        @Test
+        void 예외_메뉴가_중복될때() {
+            assertSimpleTest(() -> {
+                runException("ab,bc,cd","달걀볶음,달걀볶음");
+                assertThat(output()).contains(ERROR);
+            });
+        }
+
+        @Test
+        void 예외_메뉴의_갯수가_맞지않을때() {
+            assertSimpleTest(() -> {
+                runException("ab,bc,cd","달걀볶음,짜장면,짬뽕,라자냐");
+                assertThat(output()).contains(ERROR);
             });
         }
     }
