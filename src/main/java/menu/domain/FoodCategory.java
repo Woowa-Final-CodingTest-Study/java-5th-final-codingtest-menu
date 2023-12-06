@@ -1,5 +1,8 @@
 package menu.domain;
 
+import static menu.constants.SystemWords.MAX_CATEGORY_INDEX;
+import static menu.constants.SystemWords.MIN_CATEGORY_INDEX;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public enum FoodCategory {
@@ -20,7 +23,7 @@ public enum FoodCategory {
     }
 
     public static int pickRandomCategoryIndex() {
-        return Randoms.pickNumberInRange(1, 5);
+        return Randoms.pickNumberInRange(MIN_CATEGORY_INDEX, MAX_CATEGORY_INDEX);
     }
 
     public String getName() {

@@ -3,10 +3,10 @@ package menu.controller;
 import java.util.List;
 import menu.domain.CoachGroup;
 import menu.domain.DayOfWeek;
-import menu.domain.Food;
 import menu.domain.Selection;
 import menu.view.InputView;
 import menu.view.OutputView;
+import menu.view.ValidateError;
 
 public class MenuSelectManager {
     InputView inputView = new InputView();
@@ -47,7 +47,7 @@ public class MenuSelectManager {
     private List<String> registerHateFood() {
         try {
             List<String> hateFoods = inputView.readHateFood();
-            validateFoodExist(hateFoods);
+            ValidateError.validateFoodExist(hateFoods);
             return hateFoods;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -55,18 +55,14 @@ public class MenuSelectManager {
         }
     }
 
-    void validateFoodExist(List<String> hateFoods) {
-        for (String food : hateFoods) {
-            if (!Food.isFoodExist(food)) {
-                throw new IllegalArgumentException("[ERROR] 존재하지 않는 메뉴입니다");
-            }
-        }
-    }
-
     void showResult(CoachGroup coachGroup) {
         Selection selection = new Selection();
-        outputView.printSelectionResult(DayOfWeek.getDayOfWeekArrange(), selection.getSelectionCategory(),
-                selection.getSelectionResult(coachGroup));
+
+        String dayOfWeekArrange = DayOfWeek.getDayOfWeekArrange();
+        String selectionCategory = selection.getSelectionCategory();
+        String selectionFoods = selection.getSelectionResult(coachGroup);
+
+        outputView.printSelectionResult(dayOfWeekArrange, selectionCategory, selectionFoods);
 
     }
 }
