@@ -1,7 +1,5 @@
 package menu.constant;
 
-import static java.util.Collections.EMPTY_LIST;
-
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;

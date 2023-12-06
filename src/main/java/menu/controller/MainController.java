@@ -63,9 +63,9 @@ public class MainController {
     public StringBuilder generateRecommendResult(RecommendMenus recommendMenus) {
         StringBuilder result = new StringBuilder();
 
-        result.append(generateDayOfWeekString()).
-                append(generateCategoryString()).
-                append(generateRecommendMenuString(recommendMenus));
+        result.append(generateDayOfWeekString())
+                .append(generateCategoryString())
+                .append(generateRecommendMenuString(recommendMenus));
 
         return result;
     }
