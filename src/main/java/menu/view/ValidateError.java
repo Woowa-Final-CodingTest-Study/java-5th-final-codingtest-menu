@@ -86,16 +86,7 @@ public class ValidateError {
         }
     }
 
-    public static void validateFoodNameLength(List<String> foods) {
-        for (String food : foods) {
-            if (food.isEmpty()) {
-                throw new IllegalArgumentException(INCREASE_FOOD_NAME);
-            }
-        }
-    }
-
     public static void validateFood(List<String> foods) {
-        validateFoodNameLength(foods);
         validateDuplicateFood(foods);
     }
 }
