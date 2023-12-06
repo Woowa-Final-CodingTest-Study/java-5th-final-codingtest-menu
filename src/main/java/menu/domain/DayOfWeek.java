@@ -1,5 +1,7 @@
 package menu.domain;
 
+import static menu.constants.SystemWords.DAYOFWEEK;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,6 +22,6 @@ public enum DayOfWeek {
     public static String getDayOfWeekArrange() {
         List<String> days = Arrays.stream(DayOfWeek.values()).
                 map(DayOfWeek::getLabel).collect(Collectors.toList());
-        return ResultFormatter.makeResultWithTitle("요일", days);
+        return ResultFormatter.makeResultWithTitle(DAYOFWEEK, days);
     }
 }

@@ -1,24 +1,30 @@
 package menu.view;
 
+import static menu.constants.SystemMessage.END_SELECTION;
+import static menu.constants.SystemMessage.REQUEST_COACH_NAME;
+import static menu.constants.SystemMessage.REQUEST_HATE_FOOD;
+import static menu.constants.SystemMessage.SHOW_SELECTION_RESULT;
+import static menu.constants.SystemMessage.START_SELECTION;
+
 public class OutputView {
     public void printStartManager() {
-        System.out.println("점심 메뉴 추천을 시작합니다.\n");
+        System.out.println(START_SELECTION + "\n");
     }
 
     public void printEndManager() {
-        System.out.println("추천을 완료했습니다.");
+        System.out.println(END_SELECTION);
     }
 
     public void requestCoachName() {
-        System.out.println("코치의 이름을 입력해 주세요. (, 로 구분)");
+        System.out.println(REQUEST_COACH_NAME);
     }
 
     public void requestHateFood(String name) {
-        System.out.printf("%s가 못 먹는 메뉴를 입력해 주세요.\n", name);
+        System.out.printf("\n" + REQUEST_HATE_FOOD + "\n", name);
     }
 
     public void printSelectionResult(String days, String categorys, String selectionResult) {
-        System.out.println("메뉴 추천 결과입니다.");
+        System.out.println("\n" + SHOW_SELECTION_RESULT);
         System.out.println(days + categorys + selectionResult);
     }
 }
