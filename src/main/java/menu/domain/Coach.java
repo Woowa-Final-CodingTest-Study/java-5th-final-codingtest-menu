@@ -7,7 +7,7 @@ public class Coach {
     private final String name;
     private final List<String> hateFood;
 
-    Coach(String name, List<String> hateFood) {
+    public Coach(String name, List<String> hateFood) {
         this.name = name;
         this.hateFood = Collections.unmodifiableList(hateFood);
     }
