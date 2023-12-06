@@ -35,10 +35,6 @@ public class MenuSelectManager {
         return inputView.readCoachName();
     }
 
-    private void endManager() {
-        outputView.printEndManager();
-    }
-
     private List<String> enrollHateFood(String name) {
         outputView.requestHateFood(name);
         return registerHateFood();
@@ -63,6 +59,9 @@ public class MenuSelectManager {
         String selectionFoods = selection.getSelectionResult(coachGroup);
 
         outputView.printSelectionResult(dayOfWeekArrange, selectionCategory, selectionFoods);
+    }
 
+    private void endManager() {
+        outputView.printEndManager();
     }
 }
